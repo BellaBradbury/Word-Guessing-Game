@@ -1,6 +1,6 @@
 const keyrow = document.getElementById('qwerty');
 const phraseDiv = document.getElementById('phrase');
-const startButton = document.getElementsByClassName('btn_reset');
+const startButton = document.getElementsByClassName('btn__reset')[0];
 let missed = 0;
 
 // LIST OF POTENTIAL PHRASES
