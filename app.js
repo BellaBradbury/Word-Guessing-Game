@@ -1,7 +1,9 @@
 const keyrow = document.getElementById('qwerty');
 const phraseDiv = document.getElementById('phrase');
 const startButton = document.getElementsByClassName('btn_reset');
+let missed = 0;
 
+// LIST OF POTENTIAL PHRASES
 const phrases = [
   'liar liar pants on fire',
   'the cow jumped over the moon',
@@ -9,9 +11,9 @@ const phrases = [
   'a game of cat and mouse',
   'when life gives you lemons make lemonade'
 ];
-let missed = 0;
 
-startButton.addEventListner('submit', () => {
+// STARTS GAME WITH BUTTON SUBMIT
+startButton.addEventListener('submit', () => {
   const overlay = document.getElementById('overlay');
   overlay.style.display = 'none';
 });
