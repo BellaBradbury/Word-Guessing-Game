@@ -17,3 +17,11 @@ startButton.addEventListener('submit', () => {
   const overlay = document.getElementById('overlay');
   overlay.style.display = 'none';
 });
+
+// RANDOMLY CHOOSE A PHRASE AND SPLIT INTO NEW ARRAY
+function getRandomPhraseArray(arr) {
+  const randomPhrase = Math.floor( Math.random() * arr.length);
+  const chosenPhrase = arr[randomPhrase];
+  const phraseLetters = chosenPhrase.split('');
+  return phraseLetters;
+};
