@@ -1,8 +1,6 @@
 const startButton = document.getElementsByClassName('btn__reset')[0];
 
 let phraseDiv = document.getElementById('phrase');
-let character = document.createElement('li');
-let characterList = document.querySelector('#phrase ul');
 
 const keyrow = document.getElementById('qwerty');
 let guessButton = document.querySelectorAll('#qwerty button')[0];
@@ -38,7 +36,9 @@ const phraseArray = getRandomPhraseAsArray(phrases);
 
 // ADDS CHARACTER ARRAY TO DOCUMENT
 function addPhrasetoDisplay(arr) {
-  for ( let i = 0; i < arr.lenth; i++ ) {
+  for ( let i = 0; i < arr.length; i++ ) {
+    const character = document.createElement('li');
+    const characterList = document.querySelector('#phrase ul');
     character.textContent = arr[i];
     characterList.append(character);
 
