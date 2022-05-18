@@ -34,11 +34,11 @@ function getRandomPhraseAsArray(arr) {
   return phraseLetters;
 }
 
-getRandomPhraseAsArray(phrases);
+const phraseArray = getRandomPhraseAsArray(phrases);
 
 // ADDS CHARACTER ARRAY TO DOCUMENT
-function addPhrasetoDisplay(array) {
-  for ( let i = 0; i < array.lenth; i++ ) {
+function addPhrasetoDisplay(arr) {
+  for ( let i = 0; i < arr.lenth; i++ ) {
     character.textContent = arr[i];
     characterList.append(character);
 
@@ -51,7 +51,6 @@ function addPhrasetoDisplay(array) {
   }
 }
 
-const phraseArray = getRandomPhraseAsArray(phrases);
 addPhrasetoDisplay(phraseArray);
 
 // CHECKS IF USER'S GUESS IS CORRECT
