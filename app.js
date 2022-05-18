@@ -52,3 +52,18 @@ function addPhrasetoDisplay(arr) {
 }
 
 addPhrasetoDisplay(phraseArray);
+
+// CHECKS IF USER'S GUESS IS CORRECT
+function checkLetter(button) {
+  let letter = document.querySelectorAll('.letter');
+  let letterMatch = null;
+
+  for ( let i = 0; i < letter.length; i++ ) {
+    if (letter[i] === guess.toUpperCase) {
+      letter[i].classList.add('show');
+      match = button.textContent;
+    }
+
+  return match;
+  }
+}
