@@ -52,34 +52,3 @@ function addPhrasetoDisplay(arr) {
 }
 
 addPhrasetoDisplay(phraseArray);
-
-// CHECKS IF USER'S GUESS IS CORRECT
-function checkLetter(button) {
-  let letter = document.querySelectorAll('.letter');
-  let letterMatch = null;
-
-  for ( let i = 0; i < letter.length; i++ ) {
-    if (letter[i] === guess.toUpperCase) {
-      letter[i].classList.add('show');
-      match = button.textContent;
-    }
-
-  return match;
-  }
-}
-
-
-guessButton.addEventListener('click', (e) => {
-  guessButton = event.target;
-
-  if (guessButton.className !== 'chosen') {
-    guessButton.classList.add('chosen');
-    guessButton.disabled = true;
-    let correctGuess = checkLetter(button);
-
-    if ( !correctGuess ) {
-      missed += 1;
-      lives.src = "images/lostHeart.png";
-    }
-  }
-});
