@@ -3,10 +3,9 @@ const startButton = document.getElementsByClassName('btn__reset')[0];
 let phraseDiv = document.getElementById('phrase');
 
 const keyrow = document.getElementById('qwerty');
-let guessButton = document.querySelectorAll('#qwerty button')[0];
-let guess = guessButton.innerText;
+const guessButton = document.querySelectorAll('#qwerty .keyrow button');
+const guess = guessButton.innerText;
 
-let lives = document.querySelector('.tries img[src="images/liveHeart.png"]');
 let missed = 0;
 
 // LIST OF POTENTIAL PHRASES
@@ -35,11 +34,11 @@ function getRandomPhraseAsArray(arr) {
 const phraseArray = getRandomPhraseAsArray(phrases);
 
 // ADDS CHARACTER ARRAY TO DOCUMENT
-function addPhrasetoDisplay(arr) {
-  for ( let i = 0; i < arr.length; i++ ) {
+function addPhrasetoDisplay(array) {
+  for ( let i = 0; i < array.length; i++ ) {
     const character = document.createElement('li');
     const characterList = document.querySelector('#phrase ul');
-    character.textContent = arr[i];
+    character.textContent = array[i];
     characterList.append(character);
 
     // CHECKS IF CHARACTER IS A SPACE OR LETTER
@@ -55,15 +54,36 @@ addPhrasetoDisplay(phraseArray);
 
 // CHECKS IF USER'S GUESS IS CORRECT
 function checkLetter(button) {
-  let letter = document.querySelectorAll('.letter');
-  let letterMatch = null;
+  const letter = getElementsByClassName(letter);
+  const guessUpper = guess.toUpperCase();
 
-  for ( let i = 0; i < letter.length; i++ ) {
-    if (letter[i] === guess.toUpperCase) {
-      letter[i].classList.add('show');
-      match = button.textContent;
+  for ( let i = 0; i < letter.length; i++) {
+    if ( letter === guessUpper ) {
+      letter.classList.add('show');
+      letterMatch = guess;
+    } else {
+      letterMatch = null;
     }
 
-  return match;
+    return letterMatch;
   }
+
+}
+
+let button = guessButton;
+for ( let i = 0; i < keyrow.length; i++ ) {
+  keyrow[i].addEventListener('click', (e) => {
+    button = e.target;
+    button.classList.add('chosen');
+    button.disabled = true;
+    checkLetter(button);
+
+    if (checkLetter(button) === null) {
+        missed += 1;
+        let lives = document.querySelector('#scoreboard .tries img[src="images/liveHeart.png"]');
+        lives.src = "images/lostHeart.png";
+        console.log(lives);
+      }
+    }
+  );
 }
