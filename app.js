@@ -54,7 +54,7 @@ addPhrasetoDisplay(phraseArray);
 
 // CHECKS IF USER'S GUESS IS CORRECT
 function checkLetter(button) {
-  const letter = getElementsByClassName(letter);
+  const letter = getElementsByClassName('letter');
   const guessUpper = guess.toUpperCase();
 
   for ( let i = 0; i < letter.length; i++) {
