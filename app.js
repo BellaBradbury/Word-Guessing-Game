@@ -4,7 +4,7 @@ let phraseDiv = document.getElementById('phrase');
 
 const keyrow = document.getElementById('qwerty');
 const guessButton = document.querySelectorAll('#qwerty .keyrow button');
-const guess = guessButton.innerText;
+const guess = guessButton.textContent;
 
 let missed = 0;
 
@@ -54,25 +54,22 @@ addPhrasetoDisplay(phraseArray);
 
 // CHECKS IF USER'S GUESS IS CORRECT
 function checkLetter(button) {
-  const letter = getElementsByClassName('letter');
-  const guessUpper = guess.toUpperCase();
+  const letter = document.getElementsByClassName('letter');
+  const guessUpper = button.textContent.toUpperCase();
 
   for ( let i = 0; i < letter.length; i++) {
-    if ( letter === guessUpper ) {
-      letter.classList.add('show');
+    if ( letter[i].textContent === guessUpper ) {
+      letter[i].classList.add('show');
       letterMatch = guess;
     } else {
       letterMatch = null;
     }
-
-    return letterMatch;
   }
-
+  return letterMatch;
 }
 
 let button = guessButton;
-for ( let i = 0; i < keyrow.length; i++ ) {
-  keyrow[i].addEventListener('click', (e) => {
+  keyrow.addEventListener('click', (e) => {
     button = e.target;
     button.classList.add('chosen');
     button.disabled = true;
@@ -83,7 +80,5 @@ for ( let i = 0; i < keyrow.length; i++ ) {
         let lives = document.querySelector('#scoreboard .tries img[src="images/liveHeart.png"]');
         lives.src = "images/lostHeart.png";
         console.log(lives);
-      }
     }
-  );
-}
+});
