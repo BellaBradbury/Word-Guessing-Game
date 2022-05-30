@@ -20,29 +20,7 @@ const phrases = [
 
 // STARTS GAME WITH BUTTON SUBMIT
 startButton.addEventListener('click', () => {
-  // removes overlay to show game display
   overlay.style.display = 'none';
-
-  // clears character list and letter display
-  const character = document.createElement('li');
-  let characterList = document.querySelector('#phrase ul');
-  characterList = '';
-  for ( let i = 0; i < character.length; i++ ) {
-    character[i].classList.remove('show');
-  }
-
-  // clears keyboard buttons
-  for ( let i = 0; i < guessButton.length; i++ ) {
-    guessButton[i].classList.remove('chosen');
-    guessButton[i].disabled = false;
-  }
-
-  // clears lives
-  missed = 0;
-  let lives = document.querySelector('#scoreboard .tries img[src="images/liveHeart.png"]');
-  for ( let i = 0; i < lives.length; i++ ) {
-    lives[i].src = 'images/liveHeart.png';
-  }
 });
 
 // RANDOMLY CHOOSE A PHRASE AND SPLIT INTO NEW ARRAY
@@ -118,11 +96,17 @@ keyrow.addEventListener('click', (e) => {
       overlay.style.display = 'flex';
       overlay.className = 'win';
       overlayHeader.innerHTML = 'Congratulations! You win!';
+      startButton.addEventListener('click', () => {
+        location.reload();
+      });
     }
     if ( missed > 4 ) {
       overlay.style.display = 'flex';
       overlay.className = 'lose';
       overlayHeader.innerHTML = 'Sorry, you lost. Would you like to try again?';
+      startButton.addEventListener('click', () => {
+        location.reload();
+      });
     }
   }
 
