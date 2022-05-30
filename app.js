@@ -1,10 +1,11 @@
+const overlay = document.getElementById('overlay');
 const startButton = document.getElementsByClassName('btn__reset')[0];
 
 let phraseDiv = document.getElementById('phrase');
 
 const keyrow = document.getElementById('qwerty');
-const guessButton = document.querySelectorAll('#qwerty .keyrow button');
-const guess = guessButton.textContent;
+let guessButton = document.querySelectorAll('#qwerty .keyrow button');
+let guess = guessButton.textContent;
 
 let missed = 0;
 
@@ -19,7 +20,6 @@ const phrases = [
 
 // STARTS GAME WITH BUTTON SUBMIT
 startButton.addEventListener('click', () => {
-  const overlay = document.getElementById('overlay');
   overlay.style.display = 'none';
 });
 
@@ -41,7 +41,7 @@ function addPhrasetoDisplay(array) {
     character.textContent = array[i];
     characterList.append(character);
 
-    // CHECKS IF CHARACTER IS A SPACE OR LETTER
+    // checks if a character is a space or letter
     if (character.textContent === ' ') {
       character.className = 'space';
     } else {
@@ -53,32 +53,54 @@ function addPhrasetoDisplay(array) {
 addPhrasetoDisplay(phraseArray);
 
 // CHECKS IF USER'S GUESS IS CORRECT
+const letter = document.getElementsByClassName('letter');
 function checkLetter(button) {
-  const letter = document.getElementsByClassName('letter');
   const guessUpper = button.textContent.toUpperCase();
+  let letterMatch = null;
 
+  // adds correct guess to the user's display
   for ( let i = 0; i < letter.length; i++) {
     if ( letter[i].textContent === guessUpper ) {
-      letter[i].classList.add('show');
+      letter[i].classList.add('show')
       letterMatch = guess;
-    } else {
-      letterMatch = null;
     }
   }
   return letterMatch;
 }
 
+//  CONNECTS THE DOC KEYBOARD TO THE USER'S INPUT AND
+  // ENSURES A USER CAN'T CLICK THE SAME KEY TWICE
 let button = guessButton;
-  keyrow.addEventListener('click', (e) => {
-    button = e.target;
-    button.classList.add('chosen');
-    button.disabled = true;
-    checkLetter(button);
+keyrow.addEventListener('click', (e) => {
+  button = e.target;
+  button.classList.add('chosen');
+  button.disabled = true;
+  checkLetter(button);
 
-    if (checkLetter(button) === null) {
-        missed += 1;
-        let lives = document.querySelector('#scoreboard .tries img[src="images/liveHeart.png"]');
-        lives.src = "images/lostHeart.png";
-        console.log(lives);
+  // if a user's guess was incorrect:
+    // their missed count goes up by one and a live heart is swapped
+  if (checkLetter(button) === null) {
+      missed++;
+      let lives = document.querySelector('#scoreboard .tries img[src="images/liveHeart.png"]');
+      lives.src = "images/lostHeart.png";
+  }
+  console.log(missed);
+
+  // checks if the user has won or lost and
+    // displays the appropriate screen
+  function checkWin() {
+    let guessedLetters = document.getElementsByClassName('show');
+    let overlayHeader = document.querySelector('#overlay h2');
+
+    if ( letter.length === guessedLetters.length ) {
+      overlay.style.display = 'flex';
+      overlay.className = 'win';
+      overlayHeader.innerHTML = 'Congratulations! You win!';
     }
+    if ( missed > 4 ) {
+      overlay.style.display = 'flex';
+      overlay.className = 'lose';
+      overlayHeader.innerHTML = 'Sorry, you lost. Would you like to try again?';
+    }
+  }
 });
