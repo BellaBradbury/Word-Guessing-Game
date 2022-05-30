@@ -1,7 +1,7 @@
 const overlay = document.getElementById('overlay');
 const startButton = document.getElementsByClassName('btn__reset')[0];
 
-let phraseDiv = document.getElementById('phrase');
+// let phraseDiv = document.getElementById('phrase');
 
 const keyrow = document.getElementById('qwerty');
 let guessButton = document.querySelectorAll('#qwerty .keyrow button');
@@ -20,7 +20,29 @@ const phrases = [
 
 // STARTS GAME WITH BUTTON SUBMIT
 startButton.addEventListener('click', () => {
+  // removes overlay to show game display
   overlay.style.display = 'none';
+
+  // clears character list and letter display
+  const character = document.createElement('li');
+  let characterList = document.querySelector('#phrase ul');
+  characterList = '';
+  for ( let i = 0; i < character.length; i++ ) {
+    character[i].classList.remove('show');
+  }
+
+  // clears keyboard buttons
+  for ( let i = 0; i < button.length; i++ ) {
+    button[i].classList.remove('chosen');
+    button[i].disabled = false;
+  }
+
+  // clears lives
+  missed = 0;
+  let lives = document.querySelector('#scoreboard .tries img[src="images/liveHeart.png"]');
+  for ( let i = 0; i < lives.length; i++ ) {
+    lives[i].src = 'images/liveHeart.png';
+  }
 });
 
 // RANDOMLY CHOOSE A PHRASE AND SPLIT INTO NEW ARRAY
