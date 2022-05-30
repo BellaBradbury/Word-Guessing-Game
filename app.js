@@ -32,9 +32,9 @@ startButton.addEventListener('click', () => {
   }
 
   // clears keyboard buttons
-  for ( let i = 0; i < button.length; i++ ) {
-    button[i].classList.remove('chosen');
-    button[i].disabled = false;
+  for ( let i = 0; i < guessButton.length; i++ ) {
+    guessButton[i].classList.remove('chosen');
+    guessButton[i].disabled = false;
   }
 
   // clears lives
