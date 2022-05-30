@@ -61,7 +61,7 @@ function checkLetter(button) {
   // adds correct guess to the user's display
   for ( let i = 0; i < letter.length; i++) {
     if ( letter[i].textContent === guessUpper ) {
-      letter[i].classList.add('show')
+      letter[i].classList.add('show');
       letterMatch = guess;
     }
   }
@@ -103,4 +103,6 @@ keyrow.addEventListener('click', (e) => {
       overlayHeader.innerHTML = 'Sorry, you lost. Would you like to try again?';
     }
   }
+
+  checkWin();
 });
