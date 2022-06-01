@@ -68,19 +68,16 @@ function checkLetter(button) {
   return letterMatch;
 }
 
-// PREVENTS DIV FROM BEING CLICKED
-const keySpace = document.getElementsByClassName('keyrow');
-keySpace.addEventListener('click', (event) => {
-  event.preventDefault();
-});
-
 //  CONNECTS THE DOC KEYBOARD TO THE USER'S INPUT AND
   // ENSURES A USER CAN'T CLICK THE SAME KEY TWICE
 let button = guessButton;
 keyrow.addEventListener('click', (e) => {
   button = e.target;
-  button.classList.add('chosen');
-  button.disabled = true;
+
+  if (button.tagName === "button") {
+    button.classList.add('chosen');
+    button.disabled = true;
+  }
   checkLetter(button);
 
   // if a user's guess was incorrect:

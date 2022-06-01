@@ -103,7 +103,6 @@ button {
 .keyrow {
   display: flex;
   justify-content: center;
-  /* pointer-events: none; */
 }
 
 .chosen {
