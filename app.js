@@ -68,6 +68,12 @@ function checkLetter(button) {
   return letterMatch;
 }
 
+// PREVENTS DIV FROM BEING CLICKED
+const keySpace = document.getElementsByClassName('keyrow');
+keySpace.addEventListener('click', (event) => {
+  event.preventDefault();
+});
+
 //  CONNECTS THE DOC KEYBOARD TO THE USER'S INPUT AND
   // ENSURES A USER CAN'T CLICK THE SAME KEY TWICE
 let button = guessButton;
