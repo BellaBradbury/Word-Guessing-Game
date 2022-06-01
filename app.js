@@ -74,20 +74,20 @@ let button = guessButton;
 keyrow.addEventListener('click', (e) => {
   button = e.target;
 
-  if (button.tagName === "button") {
+  if (button.tagName === "BUTTON") {
     button.classList.add('chosen');
     button.disabled = true;
-  }
-  checkLetter(button);
+    checkLetter(button);
 
-  // if a user's guess was incorrect:
-    // their missed count goes up by one and a live heart is swapped
-  if (checkLetter(button) === null) {
-      missed++;
-      let lives = document.querySelector('#scoreboard .tries img[src="images/liveHeart.png"]');
-      lives.src = "images/lostHeart.png";
+    // if a user's guess was incorrect:
+      // their missed count goes up by one and a live heart is swapped
+    if (checkLetter(button) === null) {
+        missed++;
+        let lives = document.querySelector('#scoreboard .tries img[src="images/liveHeart.png"]');
+        lives.src = "images/lostHeart.png";
+    }
+    console.log(missed);
   }
-  console.log(missed);
 
   // checks if the user has won or lost and
     // displays the appropriate screen
