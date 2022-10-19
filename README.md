@@ -1,5 +1,5 @@
 # Develop A Word Guessing Game
-Team Treehouse - Front End Web Development TechDegree - Project 5
+Team Treehouse - Web Development TechDegree - Project 5
 
 Submitted 6/1/22 ***EXCEEDS EXPECTATIONS***
 
