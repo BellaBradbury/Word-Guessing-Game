@@ -1,7 +1,7 @@
 # Develop A Word Guessing Game
-Team Treehouse - Web Development TechDegree - Project 5
 
-Submitted 6/1/22 ***EXCEEDS EXPECTATIONS***
+Team Treehouse - Web Development TechDegree - Project 5
+    - Submitted 6/1/22 ***EXCEEDS EXPECTATIONS***
 
 -SKILLS USED-
 * JavaScript
