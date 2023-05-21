@@ -1,8 +1,6 @@
 const overlay = document.getElementById('overlay');
 const startButton = document.getElementsByClassName('btn__reset')[0];
 
-// let phraseDiv = document.getElementById('phrase');
-
 const keyrow = document.getElementById('qwerty');
 let guessButton = document.querySelectorAll('#qwerty .keyrow button');
 let guess = guessButton.textContent;
@@ -34,7 +32,7 @@ function getRandomPhraseAsArray(arr) {
 const phraseArray = getRandomPhraseAsArray(phrases);
 
 // ADDS CHARACTER ARRAY TO DOCUMENT
-function addPhrasetoDisplay(array) {
+function addPhraseToDisplay(array) {
   for ( let i = 0; i < array.length; i++ ) {
     const character = document.createElement('li');
     const characterList = document.querySelector('#phrase ul');
@@ -50,7 +48,7 @@ function addPhrasetoDisplay(array) {
   }
 }
 
-addPhrasetoDisplay(phraseArray);
+addPhraseToDisplay(phraseArray);
 
 // CHECKS IF USER'S GUESS IS CORRECT
 const letter = document.getElementsByClassName('letter');
